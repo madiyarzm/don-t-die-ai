@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Alert Page</title>
+<!-- Leaflet CSS -->
+<link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+<style>
+    /* Basic Reset */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* Body & Container Styles */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #222531; /* Dark background color */
+  padding: 20px;
+}
+
+.container {
+  max-width: 600px;
+  margin: auto;
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+/* Section & Typography Styles */
+#feeling-weird-section, #location-shared-section {
+  text-align: center;
+  /* padding: 20px 0; */
+  padding-top: -10px;
+  border: 4px solid #63E79E;
+  height: 600px;
+}
+
+h1 {
+  color: rgb(0, 0, 0);
+  margin-bottom: 20px;
+}
+
+/* Button Styles */
+button {
+  background-color: #222531;
+  color: white;
+  border: 4px solid #63E79E; /* Green border */
+  padding: 10px 10px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 18px;
+  margin-bottom: 15px; /* Reduced margin */
+  width: calc(100% - 30px); /* Accounting for padding */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+button:hover {
+  background-color: #557A95;
+}
+
+/* Timer & Location Styles */
+.timer, #location {
+  color: #5D5C61;
+}
+
+/* Map Embed Styles */
+.map {
+  width: 100%;
+  height: 300px;
+  margin-top: 20px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #222531; /* Dark background color */
+  padding: 10px;
+}
+
+.menu-button img {
+  #location-shared-section {
+    height: 400px; /* Increased height for share location section */
+  }
+  width: 50px; /* Adjusted size */
+  height: 50px; /* Adjusted size */
+}
+
+/* Adjust this as per your requirements */
+.emergency-call-button img,
+.profile img {
+  width: 40px;
+  height: 40px;
+}
+
+/* Optional: If you have any additional adjustments for responsive design */
+@media (max-width: 600px) {
+  .map {
+    margin-top: 10px; /* Reduced top space of the map */
+  }
+  .button {
+    padding: 12px;
+    font-size: 16px;
+  }
+}
+
+/* ... existing styles ... */
+
+.container {
+  max-width: 600px;
+  margin: auto;
+  background: white;
+  padding: 10px; /* Reduced padding */
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+/* Adjust the map container styles to fit better */
+#map {
+  width: calc(100% - 20px); /* Adjust width to account for padding */
+  height: 300px;
+  margin: 0; /* Remove if any margin is set */
+}
+
+/* You can also adjust the size and positioning of the latitude and longitude info if needed */
+#location {
+  margin: 10px 0; /* Adjust top and bottom margin as necessary */
+}
+
+/* ... other styles ... */
+
+
+</style>
+<!-- Leaflet JavaScript -->
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+</head>
+
+<body onload="initMap()" >
+
+<div onload="window.location.href='https://chat.openai.com/g/g-rw81LQDGY-safety-companion';" class="container">
+  <div id="feeling-weird-section">
+    <h1>I'm feeling weird</h1>
+  </div>
+  
+  <div id="location-shared-section">
+    <h1 style="font-style: italic;">Location shared to your friends.</h1>
+    <div id="location">Latitude: 37.5645498<br>Longitude: -122.382223</div>
+    <div id="map" class="map"></div> <!-- Map container -->
+    <div class="timer">
+      Time since alert: <span id="time">00:00:00</span>
+    </div>
+  </div>
+</div>
+<!-- 
+<button class="button" onclick="window.location.href='questions.html';">I feel weird</button> -->
+
+
+<script>
+let map; // Variable to hold the map instance
+let marker; // Variable to hold the marker instance
+const lat = 37.5645498; // Pre-assigned latitude
+const lng = -122.382223; // Pre-assigned longitude
+
+function initMap() {
+  // Display the map section and hide the initial section
+  document.getElementById('feeling-weird-section').style.display = 'none';
+  const locationSharedSection = document.getElementById('location-shared-section');
+  locationSharedSection.style.display = 'block';
+
+  // Initialize the map and set the view to the pre-assigned location
+  map = L.map('map').setView([lat, lng], 13);
+
+  // Add an OpenStreetMap tile layer to the map
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    maxZoom: 19,
+    attribution: '© OpenStreetMap contributors'
+  }).addTo(map);
+
+  // Add a marker to the map at the pre-assigned location
+  marker = L.marker([lat, lng]).addTo(map).bindPopup('You are here.').openPopup();
+
+  // Set a delay of 3 seconds to send the SMS after showing the location
+  setTimeout(function() {
+        window.location.href = 'https://chat.openai.com/g/g-rw81LQDGY-safety-companion'; // Redirect to questions.html
+    }, 2000);
+}
+
+// function sendDangerAlert() {
+//     const mapLink = `https://yourwebsite.com/map.html?lat=${lat}&lng=${lng}`;
+//     const smsBody = `Emergency! I need help. Here is my location: ${mapLink}`;
+//     // Note: iOS does not support automatically filling in the phone number in the sms: URI
+//     const smsLink = `sms:&body=${encodeURIComponent(smsBody)}`;
+//     window.location.href = smsLink;
+// }
+
+function updateTimer() {
+  const currentTime = new Date();
+  const timeElapsed = new Date(currentTime - startTime);
+  const hours = timeElapsed.getUTCHours().toString().padStart(2, '0');
+  const minutes = timeElapsed.getUTCMinutes().toString().padStart(2, '0');
+  const seconds = timeElapsed.getUTCSeconds().toString().padStart(2, '0');
+  document.getElementById('time').textContent = `${hours}:${minutes}:${seconds}`;
+}
+
+// When the window is unloaded, clear the interval to prevent memory leaks
+window.onunload = function() {
+  if (interval) {
+    clearInterval(interval);
+  }
+}
+
+// function sendDangerAlert() {
+//     const mapLink = `https://yourwebsite.com/map.html?lat=${lat}&lng=${lng}`;
+//     const smsBody = `Emergency! Your friend is in danger. Here is their location: ${mapLink}`;
+//     // On Android, the recipient's number cannot be included in the sms: URI, so we add it in the body.
+//     const phoneNumber = "14156101469"; // This is the number you want to send the SMS to.
+//     const smsLink = `sms:${phoneNumber}?body=${encodeURIComponent(smsBody)}`;
+//     window.location.href = smsLink; // Attempt to open the default SMS app with the pre-filled content.
+// }
+
+function redirect() {
+    setTimeout(function() {
+      window.location.href = "https://chat.openai.com/g/g-rw81LQDGY-safety-companion//" 
+    }, 2000); // 2000 milliseconds = 2 seconds
+  }
+</script>
+
+</body>
+</html>

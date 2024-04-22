@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Messages | Firebase</title>
+    <link rel="stylesheet" href="./registration_style.css">
+</head>
+
+<body>
+    <h1 class="registration-title">Update your information</h1>
+    
+    <div class="container">
+        <form action="" id="updating_user_info_page">
+            <div class="alert">Your message sent</div>
+
+            <div class="inputBox">
+                <input type="text" id="name" placeholder="Your Name..." required/>
+            </div>
+
+            <div class="inputBox">
+                <input type="number" id="age" placeholder="Your Age..." required/>
+            </div>
+
+            <div class="inputBox">
+                <select id="gender" name="gender" required >
+                    <option value="">Your Gender...</option>
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                    <option value="other">Other</option>
+                </select>
+            </div>
+
+            <div class="inputBox">
+                <input type="number" id="weight" placeholder="Your Weight..." required />
+            </div>
+
+            <div class="inputBox">
+                <input type="number" id="height" placeholder="Your Height..."  required/>
+            </div>
+
+            <div class="inputBox">
+                <input type="number" id="insuranceid" name="insuranceid" placeholder="Your Insurance ID..."/>
+
+            </div>
+
+            <div class="inputBox">
+                <input type="email" id="emailid" placeholder="Your Email..." required/>
+            </div>
+
+            <div class="inputBox">
+                <button type="submit" onclick="window.location.href='home_page.html';">Update</button>
+            </div>
+        </form>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/7.14.1-0/firebase.js"></script>
+    <script src="./mail.js"></script>
+</body>
+
+</html>

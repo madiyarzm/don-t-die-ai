@@ -1,0 +1,129 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif; /* It's good practice to define the font family */
+}
+
+body{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #222531;
+    flex-direction: column; /* Aligns items vertically */
+}
+
+h1 {
+    color: #63E79E; /* Styling for the title text */
+    font-size: 2rem; /* Decrease font size for the title */
+    padding-top: 10%;
+    margin-bottom: 2rem; /* Space between the title and the form */
+}
+
+.container{
+    width: 100%;
+    max-width: 600px; /* Set a max-width to keep form size consistent */
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: 0px 5px 25px rgba(0,0,0,0.2);
+    background-color: #FFF; /* Ensure the background is white */
+    position: relative; /* Add position relative */
+}
+
+.container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    height: 100%;
+    border: 2px solid #63E79E; /* Border connecting form and container */
+    border-radius: 20px;
+    z-index: -1; /* Behind the form */
+}
+
+.container form{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-direction: column;
+}
+
+h1 {
+    color: #63E79E; /* Styling for the title text */
+    font-size: 2rem; /* Decrease font size for the title */
+    margin-bottom: 2rem; /* Space between the title and the form */
+    margin-top: -10rem;
+}
+
+.inputBox{
+    width: 100%;
+    margin: 10px 0;
+}
+
+.inputBox input[type="text"], 
+.inputBox input[type="email"], 
+.inputBox input[type="number"], 
+.inputBox select{
+    width: 100%;
+    height: 50px;
+    padding: 0px 15px; /* Increase padding for better text alignment */
+    font-size: 18px; /* Increase font size for better readability */
+    border: 3px solid #63E79E; /* Adjust border thickness */
+    border-radius: 10px; /* Rounded corners */
+    outline: none;
+}
+
+.inputBox button{
+    width: 100%;    
+    padding: 15px 20px;
+    border: 3px solid #63E79E; /* Consistent with input border */
+    background: #FFF9C9;
+    color: rgb(0, 0, 0);
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 10px; /* Rounded corners for button */
+}
+
+.inputBox button:hover{
+    background: rgb(0, 17, 255);
+    transition: all 0.3s ease;
+}
+
+::placeholder{
+    color: rgba(0, 0, 0, 0.5); /* Placeholder text color */
+}
+
+.alert{
+    display: none; /* Keep hidden until needed */
+    /* Other styles */
+}
+
+/* Add any additional styles for media queries or elements as needed */
+
+@media only screen and (max-width: 600px) {
+    .container {
+        width: 100%;
+        padding: 10px;
+        border-radius: 10px;
+    }
+
+    .inputBox input[type="text"],
+    .inputBox input[type="email"],
+    .inputBox input[type="number"],
+    .inputBox select {
+        height: 40px;
+        font-size: 16px;
+    }
+
+    .inputBox button {
+        padding: 12px 16px;
+        font-size: 18px;
+    }
+}

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Home Page</title>
+  <style>
+
+    .call-button {
+        background: none;
+        border: none;
+        cursor: pointer;
+        padding: 0;
+    }
+
+    .call-button img {
+        width: 40px;
+        height: 40px;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      background: #fff;
+    }
+    
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px;
+      background: #f8f8f8;
+    }
+
+    .header h1 {
+      font-size: 24px;
+      margin: 0;
+    }
+
+    .menu-button {
+      font-size: 24px;
+      cursor: pointer;
+    }
+
+    .main-content {
+      padding: 20px;
+      text-align: center;
+    }
+
+    .main-content h2 {
+      margin-bottom: 30px;
+    }
+
+    .button {
+      background: #eee;
+      padding: 15px;
+      margin-bottom: 15px;
+      border: none;
+      border-radius: 10px;
+      font-size: 18px;
+      cursor: pointer;
+      width: 100%;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    }
+
+    .call-button {
+      background: none;
+      border: none;
+    }
+
+    /* Media query for responsive design */
+    @media (max-width: 600px) {
+      .button {
+        padding: 12px;
+        font-size: 16px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+    <div class="header">
+        <div class="emergency-call-button">
+          <!-- Corrected anchor tag around the image -->
+          <a href="tel:+16284886712" class="call-button" aria-label="Call emergency number">
+            <img src="call_button.png" alt="Call" />
+          </a>
+        </div>
+        <h1>HOME PAGE</h1>
+        <div class="menu-button">☰</div>
+      </div>
+
+  <div class="main-content">
+    <h2>What's up?</h2>
+    <button class="button" onclick="window.location.href='ifeelweird.html';">I feel weird</button>
+    <button class="button">I see something weird</button>
+    <button class="button">I feel unsafe</button>
+  </div>
+
+
+  <div class="main-content">
+    <h2>Are you going out tonigth?</h2>
+    <button class="button">Add list of first contacts from people that are going out with you</button>
+  </div>
+
+  
+
+
+
+</body>
+</html>

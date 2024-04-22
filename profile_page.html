@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile</title>
+    <link rel="stylesheet" href="profile_page_style.css">
+</head>
+
+<body>
+    <div class="profile-container">
+        <div class="email-container">
+            <!-- <label for="email">Email:</label> -->
+            <input type="email" placeholder="Your email" id="email" name="email">
+            <button id="login-btn">Log In</button>
+        </div>
+        <!-- <div class="user-info-box"> -->
+            <h2>User Info</h2>
+            <div id="user-info">
+                <!-- User information will be populated here -->
+            </div>
+            <a href="registration.html">
+                <button id="update-info-btn">Update Info</button>
+            </a>
+            
+        <!-- </div> -->
+        <!-- <div class="friends-list-box"> -->
+            <h2>Friends List</h2>
+            <ul id="friends-list">
+                <!-- Friends list will be populated here -->
+            </ul>
+            <a href="friends_details.html">
+                <button id="view-friend-details-btn">Add New Friend</button>
+            </a>
+            
+        <!-- </div> -->
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/7.14.1-0/firebase.js"></script>
+    <script src="profile_page_js.js"></script>
+</body>
+
+</html>
