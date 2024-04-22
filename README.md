@@ -1,6 +1,3 @@
-# don-t-die-ai
-Don't Die AI - Preventing Party and Street Drug Overdose 
-
 # Don't Die AI: Preventing Party and Street Drug Overdose
 
 Welcome to the repository for Don't Die AI, an application aimed at combating the critical issue of party and street drug overdoses. Our mission is to provide a user-friendly tool that could potentially save lives during critical situations.
